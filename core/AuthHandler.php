@@ -172,6 +172,13 @@ class AuthHandler
     // Verifica se a senha corresponde ao hash
     public static function verifyPassword($password, $hash)
     {
+        // Evita deprecated passando null para password_verify
+        if (!is_string($hash) || $hash === '' || $hash === null) {
+            return false;
+        }
+        if (!is_string($password)) {
+            $password = '';
+        }
         return password_verify($password, $hash);
     }
 }

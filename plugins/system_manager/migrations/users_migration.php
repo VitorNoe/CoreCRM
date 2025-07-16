@@ -18,6 +18,13 @@ class SystemManagerUsersMigration {
                 INDEX idx_role (role),
                 INDEX idx_active (active)
             ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;");
+
+            // ALTER TABLE para renomear campos do português para inglês, se existirem
+            $pdo->exec("ALTER TABLE users 
+                CHANGE COLUMN nome name VARCHAR(255) NOT NULL,
+                CHANGE COLUMN senha password VARCHAR(255) NOT NULL,
+                CHANGE COLUMN tipo role ENUM('admin', 'user', 'moderator') NOT NULL DEFAULT 'user',
+                CHANGE COLUMN ativo active TINYINT(1) DEFAULT 1;");
         } catch (Exception $e) {
             System::log('Erro ao executar migration de usuários: ' . $e->getMessage(), 'error');
         }
