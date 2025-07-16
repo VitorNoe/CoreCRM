@@ -1,4 +1,3 @@
-
 <?php
 
 // Migração para criar a tabela de clientes
