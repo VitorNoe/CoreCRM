@@ -45,19 +45,19 @@ class AvatarBlock {
             <?php if ($src): ?>
                 <img class="block-avatar object-cover rounded-full <?= $borderClass ?>" src="<?= htmlspecialchars($src) ?>" alt="<?= htmlspecialchars($alt) ?>" style="width:<?= (int)$size ?>px;height:<?= (int)$size ?>px;" />
             <?php elseif ($icon): ?>
-                <div class="flex items-center justify-center bg-indigo-100 text-indigo-600 rounded-full <?= $borderClass ?>" style="width:<?= (int)$size ?>px;height:<?= (int)$size ?>px;font-size:<?= (int)($size*0.55) ?>px;">
+                <div class="flex items-center justify-center block-avatar-icon rounded-full <?= $borderClass ?>" style="width:<?= (int)$size ?>px;height:<?= (int)$size ?>px;font-size:<?= (int)($size*0.55) ?>px;">
                     <i class="fa <?= htmlspecialchars($icon) ?>"></i>
                 </div>
             <?php else: ?>
-                <div class="flex items-center justify-center bg-gray-200 text-gray-500 rounded-full <?= $borderClass ?>" style="width:<?= (int)$size ?>px;height:<?= (int)$size ?>px;font-size:<?= (int)($size*0.5) ?>px;">
+                <div class="flex items-center justify-center block-avatar-icon rounded-full <?= $borderClass ?>" style="width:<?= (int)$size ?>px;height:<?= (int)$size ?>px;font-size:<?= (int)($size*0.5) ?>px;">
                     <i class="fa fa-user"></i>
                 </div>
             <?php endif; ?>
             <?php if ($status && isset($statusColor[$status])): ?>
-                <span class="absolute bottom-0 right-0 block w-3 h-3 rounded-full border-2 border-white <?= $statusColor[$status] ?>"></span>
+                <span class="absolute bottom-0 right-0 block w-3 h-3 rounded-full border-2 block-avatar-status <?= $statusColor[$status] ?>"></span>
             <?php endif; ?>
             <?php if ($badge): ?>
-                <span class="absolute -top-1 -right-1 bg-red-500 text-white text-xs rounded-full px-1.5 py-0.5 shadow font-bold" style="font-size:10px;min-width:18px;line-height:1;"> <?= htmlspecialchars($badge) ?> </span>
+                <span class="absolute -top-1 -right-1 block-avatar-badge text-xs rounded-full px-1.5 py-0.5 shadow font-bold" style="font-size:10px;min-width:18px;line-height:1;"> <?= htmlspecialchars($badge) ?> </span>
             <?php endif; ?>
         </div>
         <?php

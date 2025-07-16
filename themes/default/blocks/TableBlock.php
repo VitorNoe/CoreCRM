@@ -70,19 +70,19 @@ class TableBlock {
                 </div>
             <?php endif; ?>
             <div class="overflow-x-auto rounded-lg shadow">
-                <table class="block-table min-w-full divide-y divide-gray-200">
-                    <thead class="bg-gray-50">
+                <table class="block-table min-w-full">
+                    <thead>
                         <tr>
                             <?php if ($selectable): ?><th class="px-4 py-2"><input type="checkbox" data-table-select-all="<?= $id ?>" /></th><?php endif; ?>
                             <?php foreach ($columns as $col): ?>
-                                <th class="px-4 py-2 text-left font-semibold text-gray-700 <?= $col['width'] ?? '' ?> <?= $col['align'] ?? '' ?>" <?= $sortable && !empty($col['sortable']) ? 'data-sortable="true"' : '' ?>>
+                                <th class="px-4 py-2 text-left font-semibold <?= $col['width'] ?? '' ?> <?= $col['align'] ?? '' ?>" <?= $sortable && !empty($col['sortable']) ? 'data-sortable="true"' : '' ?>>
                                     <?= htmlspecialchars($col['label'] ?? $col['key']) ?>
                                 </th>
                             <?php endforeach; ?>
                             <?php if (!empty($actions)): ?><th class="px-4 py-2">Ações</th><?php endif; ?>
                         </tr>
                     </thead>
-                    <tbody class="bg-white divide-y divide-gray-100">
+                    <tbody>
                         <?php foreach ($pagedData as $row): ?>
                             <tr>
                                 <?php if ($selectable): ?><td class="px-4 py-2"><input type="checkbox" data-table-select-row="<?= $id ?>" /></td><?php endif; ?>
@@ -102,7 +102,7 @@ class TableBlock {
                                     <td class="px-4 py-2">
                                         <div class="flex gap-2">
                                             <?php foreach ($actions as $action): ?>
-                                                <button type="button" class="inline-flex items-center gap-1 px-3 py-1 rounded bg-indigo-600 hover:bg-indigo-700 text-white text-xs font-semibold transition" onclick="<?= htmlspecialchars($action['callback'] ?? '') ?>(this)">
+                                                <button type="button" class="inline-flex items-center gap-1 px-3 py-1 rounded block-table-action text-xs font-semibold transition" onclick="<?= htmlspecialchars($action['callback'] ?? '') ?>(this)">
                                                     <?php if (!empty($action['icon'])): ?><i class="fa <?= htmlspecialchars($action['icon']) ?>"></i><?php endif; ?>
                                                     <?= htmlspecialchars($action['label']) ?>
                                                 </button>

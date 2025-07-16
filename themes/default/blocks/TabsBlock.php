@@ -73,7 +73,7 @@ class TabsBlock {
                     $isActive = $i == $active;
                     $isDisabled = !empty($tab['disabled']);
                     $icon = !empty($tab['icon']) ? '<i class=\"fa '.htmlspecialchars($tab['icon']).' mr-2\"></i>' : '';
-                    $badge = isset($tab['badge']) ? '<span class=\"ml-2 px-2 py-1 text-xs rounded bg-blue-100 text-blue-700\">'.htmlspecialchars($tab['badge']).'</span>' : '';
+                        $badge = isset($tab['badge']) ? '<span class=\"ml-2 px-2 py-1 text-xs rounded block-tabs-badge\">'.htmlspecialchars($tab['badge']).'</span>' : '';
                 ?>
                     <li class="block-tabs-tab <?= $tabItemClass ?> <?= $tabClass ?><?= $isActive ? ' '.$activeClass : '' ?><?= $isDisabled ? ' '.$disabledClass : '' ?>"
                         data-tab="<?= $i ?>"

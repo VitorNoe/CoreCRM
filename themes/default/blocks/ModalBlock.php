@@ -41,18 +41,18 @@ class ModalBlock {
         $open = !empty($config['open']);
         $extraClass = $config['class'] ?? '';
         $modalClass = "block-modal fixed inset-0 flex items-center justify-center z-50 $overlay $extraClass";
-        $contentClass = "block-modal-content bg-white rounded-lg shadow-lg p-8 relative $size";
+        $contentClass = "block-modal-content rounded-lg shadow-lg p-8 relative $size";
         ob_start();
         ?>
         <div id="<?= htmlspecialchars($id) ?>" class="<?= $modalClass ?>" style="display:<?= $open ? 'flex' : 'none' ?>;">
             <div class="absolute inset-0 <?= $overlay ?>" onclick="document.getElementById('<?= htmlspecialchars($id) ?>').style.display='none'"></div>
             <div class="relative z-10 <?= $contentClass ?>">
-                <?php if ($icon): ?><span class="text-3xl text-indigo-600 mb-2 block"><i class="fa <?= htmlspecialchars($icon) ?>"></i></span><?php endif; ?>
+                <?php if ($icon): ?><span class="text-3xl block-modal-icon mb-2 block"><i class="fa <?= htmlspecialchars($icon) ?>"></i></span><?php endif; ?>
                 <?php if ($title): ?><h2 class="text-xl font-bold mb-2"> <?= htmlspecialchars($title) ?> </h2><?php endif; ?>
                 <div class="block-modal-body mb-4"> <?= is_callable($content) ? $content() : $content ?> </div>
                 <div class="block-modal-actions flex gap-2 justify-end mt-4">
                     <?php foreach ($buttons as $btn): ?>
-                        <button type="<?= htmlspecialchars($btn['type'] ?? 'button') ?>" class="px-4 py-2 rounded <?= $btn['color'] ?? 'bg-gray-400' ?> text-white font-semibold flex items-center gap-2" onclick="<?php if (!empty($btn['close'])): ?>document.getElementById('<?= htmlspecialchars($id) ?>').style.display='none';<?php endif; ?><?= !empty($btn['callback']) ? htmlspecialchars($btn['callback']) . '(this);' : '' ?>">
+                        <button type="<?= htmlspecialchars($btn['type'] ?? 'button') ?>" class="px-4 py-2 rounded block-modal-action font-semibold flex items-center gap-2" onclick="<?php if (!empty($btn['close'])): ?>document.getElementById('<?= htmlspecialchars($id) ?>').style.display='none';<?php endif; ?><?= !empty($btn['callback']) ? htmlspecialchars($btn['callback']) . '(this);' : '' ?>">
                             <?php if (!empty($btn['icon'])): ?><i class="fa <?= htmlspecialchars($btn['icon']) ?>"></i><?php endif; ?>
                             <?= htmlspecialchars($btn['label'] ?? 'Fechar') ?>
                         </button>

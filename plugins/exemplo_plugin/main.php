@@ -13,7 +13,7 @@ RoutesHandler::addRoute("GET", "/exemplo-plugin/exemplos", function() {
     require_once __DIR__ . '/../../themes/default/blocks/BlockRenderer.php';
     echo BlockRenderer::render('Header', [
         'title' => 'Exemplos de Blocos',
-        'logo' => '<a href=\"/\" class=\"text-xl font-bold tracking-tight hover:underline\">CoreCRM</a>',
+        'logo' => '<a href="https://crm.alunostds.dev.br" class=\"text-xl font-bold tracking-tight hover:underline\">CoreCRM</a>',
         'user' => ['name'=>'Demo'],
         'actions' => [ ['label'=>'Voltar','href'=>'/','class'=>'bg-indigo-500 hover:bg-indigo-600'] ],
     ]);

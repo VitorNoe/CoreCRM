@@ -60,6 +60,33 @@ class HeaderBlock {
                 <?php endif; ?>
             </div>
             <div class="flex items-center gap-4">
+                <button id="theme-toggle-btn" onclick="toggleTheme()" style="padding:6px 12px;border-radius:6px;border:1px solid var(--color-border);background:var(--color-bg);color:var(--color-text);cursor:pointer;display:flex;align-items:center;gap:8px;">
+                    <span id="theme-toggle-icon">
+                        <i class="fa fa-moon"></i>
+                    </span>
+                </button>
+                <script>
+                function updateThemeIcon() {
+                    var theme = document.body.getAttribute('data-theme');
+                    var icon = document.getElementById('theme-toggle-icon');
+                    if (theme === 'dark') {
+                        icon.innerHTML = '<i class="fa fa-sun"></i>';
+                    } else {
+                        icon.innerHTML = '<i class="fa fa-moon"></i>';
+                    }
+                }
+                document.addEventListener('DOMContentLoaded', updateThemeIcon);
+                document.body.addEventListener('themechange', updateThemeIcon);
+                window.toggleTheme = function() {
+                    var current = document.body.getAttribute('data-theme');
+                    var next = current === 'dark' ? 'light' : 'dark';
+                    document.body.setAttribute('data-theme', next);
+                    localStorage.setItem('theme', next);
+                    updateThemeIcon();
+                    var event = new Event('themechange');
+                    document.body.dispatchEvent(event);
+                };
+                </script>
                 <?php if ($user): ?>
                     <span class="hidden sm:inline">Olá, <?= htmlspecialchars($user['name'] ?? 'Usuário') ?></span>
                 <?php endif; ?>

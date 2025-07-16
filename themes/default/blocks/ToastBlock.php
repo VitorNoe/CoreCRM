@@ -43,7 +43,7 @@ class ToastBlock {
             <?php if ($icon): ?><i class="fa <?= htmlspecialchars($icon) ?> text-xl"></i><?php endif; ?>
             <span class="flex-1"> <?= htmlspecialchars($message) ?> </span>
             <?php if ($close): ?>
-                <button type="button" class="ml-2 px-2 py-1 rounded bg-white/20 hover:bg-white/30 text-xs font-bold" onclick="document.getElementById('<?= htmlspecialchars($id) ?>').style.display='none'">
+                <button type="button" class="ml-2 px-2 py-1 rounded block-toast-close text-xs font-bold" onclick="document.getElementById('<?= htmlspecialchars($id) ?>').style.display='none'">
                     <i class="fa fa-times"></i>
                 </button>
             <?php endif; ?>
