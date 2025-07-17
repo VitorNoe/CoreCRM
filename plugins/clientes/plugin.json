@@ -1,0 +1,23 @@
+{
+    "name": "Plugin de Clientes",
+    "version": "1.0.0",
+    "description": "Plugin completo para gerenciamento de clientes com funcionalidades de CRUD, busca, filtros e paginação",
+    "author": "CoreCRM Team",
+    "main": "main.php",
+    "dependencies": [],
+    "permissions": [
+        "admin_access",
+        "database_access"
+    ],
+    "database_tables": [
+        "clientes"
+    ],
+    "admin_menu": [
+        {
+            "name": "Clientes",
+            "icon": "users",
+            "url": "/admin/clientes"
+        }
+    ]
+}
+
