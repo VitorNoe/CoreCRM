@@ -1,0 +1,125 @@
+{
+  "name": "Gerenciador de Clientes",
+  "slug": "clientes",
+  "version": "1.0.0",
+  "description": "Sistema completo de gerenciamento de clientes com CRUD, busca avançada, soft delete e integração com hooks do sistema",
+  "author": "Gabriel Barros",
+  "license": "MIT",
+  "dependencies": [],
+  "requires": {
+      "php": ">=7.4",
+      "system_version": ">=2.0.0"
+  },
+  "routes": [
+      {
+          "method": "GET",
+          "path": "/clientes",
+          "description": "Lista todos os clientes"
+      },
+      {
+          "method": "GET", 
+          "path": "/clientes/novo",
+          "description": "Formulário para criar novo cliente"
+      },
+      {
+          "method": "POST",
+          "path": "/clientes/criar", 
+          "description": "Processa criação de cliente"
+      },
+      {
+          "method": "GET",
+          "path": "/clientes/editar/{id}",
+          "description": "Formulário para editar cliente"
+      },
+      {
+          "method": "POST",
+          "path": "/clientes/atualizar/{id}",
+          "description": "Processa atualização de cliente"
+      },
+      {
+          "method": "POST",
+          "path": "/clientes/deletar/{id}",
+          "description": "Realiza soft delete do cliente"
+      },
+      {
+          "method": "GET",
+          "path": "/api/clientes",
+          "description": "API para listar clientes"
+      },
+      {
+          "method": "GET",
+          "path": "/api/clientes/{id}",
+          "description": "API para obter cliente específico"
+      }
+  ],
+  "database_tables": [
+      {
+          "name": "clients",
+          "description": "Tabela principal de clientes",
+          "columns": [
+              "id", "name", "email", "phone", "company", 
+              "address", "city", "state", "zip_code", "country", 
+              "status", "notes", "created_by", "created_at", 
+              "updated_at", "deleted_at"
+          ]
+      }
+  ],
+  "permissions": [
+      {
+          "name": "manage_clients",
+          "description": "Permite criar, editar e deletar clientes"
+      },
+      {
+          "name": "view_clients", 
+          "description": "Permite visualizar lista de clientes"
+      },
+      {
+          "name": "export_clients",
+          "description": "Permite exportar dados de clientes"
+      }
+  ],
+  "hooks": [
+      {
+          "name": "after_client_created",
+          "description": "Executado após criação de cliente"
+      },
+      {
+          "name": "after_client_updated", 
+          "description": "Executado após atualização de cliente"
+      },
+      {
+          "name": "after_client_deleted",
+          "description": "Executado após soft delete de cliente"
+      }
+  ],
+  "admin_features": {
+      "dashboard_widget": true,
+      "sidebar_menu": true,
+      "quick_actions": true
+  },
+  "features": [
+      "CRUD completo",
+      "Busca avançada",
+      "Soft delete",
+      "Validação de dados",
+      "API RESTful",
+      "Sistema de hooks",
+      "Dashboard widget",
+      "Contagem de registros"
+  ],
+  "configuration": {
+      "default_country": "Brasil",
+      "pagination_limit": 50,
+      "search_fields": ["name", "email", "company"],
+      "required_fields": ["name", "email"]
+  },
+  "assets": {
+      "css": [],
+      "js": [],
+      "icons": ["people", "person_add"]
+  },
+  "support": {
+      "email": "support@example.com",
+      "documentation": "https://docs.example.com/plugins/client-manager"
+  }
+}
