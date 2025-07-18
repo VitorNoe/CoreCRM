@@ -1,6 +1,13 @@
 <?php
 // Lista de usuários
-ThemeHandler::render_header(['title' => 'Usuários - CoreCRM']);
+echo BlockRenderer::render('Header', [
+    'title' => 'Usuários',
+    'logo' => '<a href="/admin" class="text-xl font-bold tracking-tight hover:underline">CoreCRM Usuários</a>',
+    'user' => ['name' => $_SESSION['user_id'] ?? 'Usuário'],
+    'actions' => [
+        ['label' => 'Voltar', 'href' => '/usuarios', 'class' => 'bg-gray-300 hover:bg-gray-400 text-gray-700']
+    ]
+]);
 ?>
 <div class="container mx-auto mt-10">
     <div class="flex justify-between items-center mb-6">

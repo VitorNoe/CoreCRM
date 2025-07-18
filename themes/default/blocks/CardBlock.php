@@ -52,6 +52,7 @@ class CardBlock {
         $layout = $config['layout'] ?? 'flex';
         $columns = $config['columns'] ?? 3;
         $gap = $config['gap'] ?? 'gap-4';
+        $minWidth = $config['minWidth'] ?? 'min-w-[80vw]';
         $containerClass = $layout === 'grid'
             ? "grid $gap grid-cols-1 sm:grid-cols-" . (int)$columns
             : "flex flex-wrap $gap";
@@ -68,7 +69,7 @@ class CardBlock {
                 $actions = $card['actions'] ?? [];
                 $content = $card['content'] ?? '';
             ?>
-            <div class="block-card flex flex-col justify-between rounded-lg shadow p-6 min-w-[220px] relative mb-2">
+            <div class="block-card flex flex-col justify-between rounded-lg shadow p-6 <?= $minWidth ?> relative mb-2">
                 <div class="flex items-center gap-3 mb-2">
                     <?php if ($icon): ?><span class="text-3xl"><i class="fa <?= htmlspecialchars($icon) ?>"></i></span><?php endif; ?>
                     <div class="flex-1">
