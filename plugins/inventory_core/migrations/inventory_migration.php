@@ -69,7 +69,7 @@ class InventoryMigration {
         }
 
         // Inserir categorias padrão
-        self::insertDefaultCategories($pdo);
+        //self::insertDefaultCategories($pdo);
     }
 
     private static function insertDefaultCategories($pdo) {
@@ -81,18 +81,13 @@ class InventoryMigration {
             ['name' => 'Outros', 'description' => 'Outros produtos']
         ];
 
-        foreach ($defaultCategories as $category) {
+        /* foreach ($defaultCategories as $category) {
             try {
-                $check = $pdo->prepare("SELECT COUNT(*) FROM inventory_categories WHERE name = ?");
-                $check->execute([$category['name']]);
-                $exists = $check->fetchColumn();
-                if ($exists == 0) {
-                    $stmt = $pdo->prepare("INSERT INTO inventory_categories (name, description) VALUES (?, ?)");
-                    $stmt->execute([$category['name'], $category['description']]);
-                }
+                $stmt = $pdo->prepare("INSERT INTO inventory_categories (name, description) VALUES (?, ?)");
+                $stmt->execute([$category['name'], $category['description']]);
             } catch (Exception $e) {
                 System::log("Erro ao inserir categoria padrão: " . $e->getMessage(), "error");
             }
-        }
+        } */
     }
 } 
